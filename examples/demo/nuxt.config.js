@@ -1,6 +1,8 @@
 const { resolve } = require('path')
+require('dotenv').config()
 
 module.exports = {
+  mode: 'spa',
   rootDir: resolve(__dirname, '../..'),
   buildDir: resolve(__dirname, '.nuxt'),
   srcDir: __dirname,
@@ -8,7 +10,12 @@ module.exports = {
     extractCSS: true
   },
   serverMiddleware: ['../api/auth'],
-  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@@'],
+  modules: [
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@@',
+    ['@nuxtjs/dotenv', {}]
+  ],
   axios: {
     proxy: true
   },
@@ -44,6 +51,13 @@ module.exports = {
       },
       twitter: {
         client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
+      },
+      okta: {
+        domain: process.env.OKTA_DOMAIN,
+        client_id: process.env.OKTA_CLIENT_ID,
+        scope: process.env.OKTA_SCOPE, // optional
+        redirect_uri: process.env.OKTA_REDIRECT_URI, // optional
+        response_type: process.env.OKTA_RESPONSE_TYPE // ideally optional
       }
     }
   }
