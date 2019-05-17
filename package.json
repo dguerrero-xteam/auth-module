@@ -24,7 +24,7 @@
   "scripts": {
     "heroku-postbuild": "nuxt build examples/demo",
     "start": "nuxt start examples/demo",
-    "dev": "nuxt examples/demo",
+    "dev": "nuxt examples/demo --port 8081",
     "lint": "eslint lib test",
     "lint-fix": "eslint --fix lib test",
     "test": "npm run lint && jest",
