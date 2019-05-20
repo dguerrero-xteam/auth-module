@@ -24,7 +24,8 @@ module.exports = {
   },
   auth: {
     redirect: {
-      callback: '/callback'
+      callback: '/callback',
+      logout: '/login'
     },
     strategies: {
       local: {
@@ -53,11 +54,11 @@ module.exports = {
         client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
       },
       okta: {
-        domain: process.env.OKTA_DOMAIN,
-        client_id: process.env.OKTA_CLIENT_ID,
+        domain: process.env.OKTA_DOMAIN, // REQUIRED
+        client_id: process.env.OKTA_CLIENT_ID, // REQUIRED
         scope: process.env.OKTA_SCOPE, // optional
-        redirect_uri: process.env.OKTA_REDIRECT_URI, // optional
-        response_type: process.env.OKTA_RESPONSE_TYPE // ideally optional
+        redirect_uri: process.env.OKTA_REDIRECT_URI, // ideally optional
+        redirect_uri_after_logout: process.env.OKTA_REDIRECT_URI_ON_LOGOUT // ideally optional
       }
     }
   }
