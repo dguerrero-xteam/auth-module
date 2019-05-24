@@ -56,9 +56,9 @@ module.exports = {
       okta: {
         domain: process.env.OKTA_DOMAIN, // REQUIRED
         client_id: process.env.OKTA_CLIENT_ID, // REQUIRED
-        scope: process.env.OKTA_SCOPE, // optional
-        redirect_uri: process.env.OKTA_REDIRECT_URI, // ideally optional
-        redirect_uri_after_logout: process.env.OKTA_REDIRECT_URI_ON_LOGOUT // ideally optional
+        redirect_uri: process.env.OKTA_REDIRECT_URI, // REQUIRED - must also be set in Okta admin
+        redirect_uri_after_logout: process.env.OKTA_REDIRECT_URI_ON_LOGOUT, // REQUIRED - must also be set in Okta admin
+        scope: process.env.OKTA_SCOPE // optional
       }
     }
   }

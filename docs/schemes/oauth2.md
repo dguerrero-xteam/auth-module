@@ -19,7 +19,8 @@ auth: {
       redirect_uri: undefined,
       client_id: 'SET_ME',
       token_key:  'access_token',
-      state: 'UNIQUE_AND_NON_GUESSABLE'
+      state: 'UNIQUE_AND_NON_GUESSABLE',
+      post_logout_redirect_uri: 'https://localhost:3000/login'
     }
   }
 }
@@ -52,6 +53,22 @@ By default is `Bearer`. It will be used in `Authorization` header of axios reque
 By default it will be inferred from `redirect.callback` option. (Defaults to `/login`)
 
 Should be same as login page or relative path to welcome screen. ([example](https://github.com/nuxt-community/auth-module/blob/dev/examples/demo/pages/callback.vue))
+
+### `post_logout_redirect_uri`
+
+By default is `http://localhost:3000/login`.
+
+Also requires an `id_token` to have been requested and stored on callback, e.g.:
+```js
+  // pages/implicit/callback.vue
+  mounted() {
+    const hashObj = this.$route.hash.substring(1).split('&').reduce((obj, str) => { 
+      const parts = str.split('='); obj[parts[0]] = parts[1]; return obj }
+      , {}
+    )
+    this.$auth.$storage.setUniversal('id_token', hashObj.id_token)
+  }
+```
 
 ### `client_id`
 

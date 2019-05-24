@@ -1,5 +1,5 @@
 {
-  "name": "@nuxtjs/auth",
+  "name": "@nuxtjs/auth-okta",
   "version": "4.5.1",
   "description": "Authentication module for Nuxt.js",
   "license": "MIT",
@@ -24,7 +24,7 @@
   "scripts": {
     "heroku-postbuild": "nuxt build examples/demo",
     "start": "nuxt start examples/demo",
-    "dev": "nuxt examples/demo --port 8081",
+    "dev": "nuxt examples/demo",
     "lint": "eslint lib test",
     "lint-fix": "eslint --fix lib test",
     "test": "npm run lint && jest",
